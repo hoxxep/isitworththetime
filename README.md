@@ -1,8 +1,8 @@
-# Time Saver Calculator
+# Is it worth the time?
 
 An Astro-based single-page site for computing how much to spend on something that saves you time.
 
-A user inputs their annual salary and then we generate a table of how much to spend on time-saving services based on different time horizons. The table is effectively a matrix of:
+A user inputs their annual salary. We then generate a table of how much to spend on time-saving services based on different time horizons. The table is effectively a matrix of:
 - How often you do the task: 50/day, 5/day, daily, weekly, monthly, yearly
 - How much time you save: 1 second, 5 seconds, 30 seconds, 1 minute, 5 minutes, 30 minutes, 1 hour, 6 hours, 1 day
 
