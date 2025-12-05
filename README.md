@@ -1,6 +1,6 @@
 # Is it worth the time?
 
-An Astro-based single-page site for computing how much to spend on something that saves you time.
+An Astro-based single-page site for computing how much to spend on something that saves you time. Based on xkcd #1205: [Is It Worth the Time?](https://xkcd.com/1205/)
 
 A user inputs their annual salary. We then generate a table of how much to spend on time-saving services based on different time horizons. The table is effectively a matrix of:
 - How often you do the task: 50/day, 5/day, daily, weekly, monthly, yearly
@@ -10,27 +10,11 @@ The formula: `(Annual Salary / 2000 hours) × (Time Saved × Frequency) = Value 
 
 We assume a user's work year is 2,000 hours (8 hours × 250 working days per year).
 
-## Commands
+## Dev Commands
 
-All commands are run from the root of the project:
-
-| Command             | Action                                      |
-|:--------------------|:--------------------------------------------|
-| `pnpm install`      | Installs dependencies                       |
-| `pnpm run dev`      | Starts local dev server at `localhost:4321` |
-| `pnpm run build`    | Build your production site to `./dist/`     |
-| `pnpm run preview`  | Preview your build locally, before deploying|
-
-## Tech Stack
-
-- Astro
-- Tailwind CSS
-- TypeScript
-
-## Deploying to GitHub Pages
-
-1. Create a GitHub repository
-2. Push this code to the repository
-3. Go to Settings > Pages
-4. Set "Source" to "GitHub Actions"
-5. The site will deploy automatically on push to main
+| Command            | Action                                       |
+|:-------------------|:---------------------------------------------|
+| `pnpm install`     | Installs dependencies                        |
+| `pnpm run dev`     | Starts local dev server at `localhost:4321`  |
+| `pnpm run build`   | Build your production site to `./dist/`      |
+| `pnpm run preview` | Preview your build locally, before deploying |
