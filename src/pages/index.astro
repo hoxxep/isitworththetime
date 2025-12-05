@@ -30,21 +30,21 @@ const timeSavings = [
   <main class="min-h-screen">
     <div class="site-section py-12 lg:py-20">
       <header class="text-center mb-12">
-        <h1 class="text-4xl lg:text-5xl font-semibold text-slate-800 dark:text-slate-100 mb-2">
+        <h1 class="text-4xl lg:text-5xl font-semibold text-slate-800 dark:text-slate-100 mb-2" data-i18n="title">
           Is it worth the time?
         </h1>
-        <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+        <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto" data-i18n="subtitle">
           Showing you how much to spend on something that saves you time
         </p>
       </header>
 
       <div class="table-controls">
         <div class="salary-input-container">
-          <label for="salary" class="block text-slate-700 dark:text-slate-300 font-medium mb-2">
+          <label for="salary" class="block text-slate-700 dark:text-slate-300 font-medium mb-2" data-i18n="annualSalary">
             Annual Salary
           </label>
           <div class="salary-input-wrapper">
-            <span class="salary-prefix">$</span>
+            <span class="salary-prefix" id="currency-symbol">$</span>
             <input
               type="text"
               id="salary"
@@ -57,18 +57,18 @@ const timeSavings = [
         </div>
 
         <div class="billing-toggle-container">
-          <label class="block text-slate-700 dark:text-slate-300 font-medium mb-2">Pay Per</label>
+          <label class="block text-slate-700 dark:text-slate-300 font-medium mb-2" data-i18n="payPer">Pay Per</label>
           <div class="billing-toggle">
-            <button type="button" class="toggle-btn active" data-period="monthly">Month</button>
-            <button type="button" class="toggle-btn" data-period="annual">Year</button>
+            <button type="button" class="toggle-btn active" data-period="monthly" data-i18n="month">Month</button>
+            <button type="button" class="toggle-btn" data-period="annual" data-i18n="year">Year</button>
           </div>
         </div>
 
         <div class="spend-toggle-container">
-          <label class="block text-slate-700 dark:text-slate-300 font-medium mb-2">Spend</label>
+          <label class="block text-slate-700 dark:text-slate-300 font-medium mb-2" data-i18n="spend">Spend</label>
           <div class="spend-toggle">
-            <button type="button" class="toggle-btn active" data-spend="money">Money</button>
-            <button type="button" class="toggle-btn" data-spend="time">Time</button>
+            <button type="button" class="toggle-btn active" data-spend="money" data-i18n="money">Money</button>
+            <button type="button" class="toggle-btn" data-spend="time" data-i18n="time">Time</button>
           </div>
         </div>
       </div>
@@ -79,18 +79,18 @@ const timeSavings = [
             <thead>
               <tr>
                 <th class="corner-cell">
-                  <span class="time-label">Time Saved</span>
-                  <span class="freq-label">Frequency</span>
+                  <span class="time-label" data-i18n="timeSaved">Time Saved</span>
+                  <span class="freq-label" data-i18n="frequency">Frequency</span>
                 </th>
-                {frequencies.map(freq => (
-                  <th class="freq-header">{freq.label}</th>
+                {frequencies.map((freq, index) => (
+                  <th class="freq-header" data-freq-index={index}>{freq.label}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {timeSavings.map((time) => (
+              {timeSavings.map((time, rowIndex) => (
                 <tr>
-                  <th class="time-header">{time.label}</th>
+                  <th class="time-header" data-time-index={rowIndex}>{time.label}</th>
                   {frequencies.map((freq) => (
                     <td
                       class="value-cell"
@@ -108,8 +108,8 @@ const timeSavings = [
       </div>
 
       <div class="mt-12 text-center text-slate-600 dark:text-slate-400">
-        <p class="font-medium mb-2">How to read this table</p>
-        <p class="text-sm max-w-xl mx-auto">
+        <p class="font-medium mb-2" data-i18n="howToRead">How to read this table</p>
+        <p class="text-sm max-w-xl mx-auto" data-i18n="instructions">
           Each cell shows how much you could reasonably spend on a tool or service
           that saves you a specific amount of time at a given frequency.
           Toggle between monthly and yearly to see the equivalent subscription cost.
@@ -123,7 +123,7 @@ const timeSavings = [
           <svg class="footer-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
           </svg>
-          Star on GitHub
+          <span data-i18n="starOnGithub">Star on GitHub</span>
         </a>
         <a href="https://xkcd.com/1205/" target="_blank" rel="noopener noreferrer" class="footer-link">
           <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -131,7 +131,7 @@ const timeSavings = [
             <polyline points="15 3 21 3 21 9"></polyline>
             <line x1="10" y1="14" x2="21" y2="3"></line>
           </svg>
-          Based on xkcd #1205
+          <span data-i18n="basedOnXkcd">Based on xkcd #1205</span>
         </a>
       </footer>
     </div>
@@ -487,6 +487,473 @@ const timeSavings = [
   // 8 hours per day * 250 work days per year
   const WORK_HOURS_PER_YEAR = 8 * 250;
 
+  // ============================================
+  // INTERNATIONALIZATION (i18n)
+  // ============================================
+
+  interface Translations {
+    title: string;
+    subtitle: string;
+    annualSalary: string;
+    payPer: string;
+    month: string;
+    year: string;
+    spend: string;
+    money: string;
+    time: string;
+    timeSaved: string;
+    frequency: string;
+    howToRead: string;
+    instructions: string;
+    starOnGithub: string;
+    basedOnXkcd: string;
+    // Frequency labels
+    freq50day: string;
+    freq5day: string;
+    freqDaily: string;
+    freqWeekly: string;
+    freqMonthly: string;
+    freqYearly: string;
+    // Time labels
+    time1sec: string;
+    time5sec: string;
+    time30sec: string;
+    time1min: string;
+    time5min: string;
+    time30min: string;
+    time1hour: string;
+    time6hours: string;
+    time1day: string;
+  }
+
+  const translations: Record<string, Translations> = {
+    en: {
+      title: 'Is it worth the time?',
+      subtitle: 'Showing you how much to spend on something that saves you time',
+      annualSalary: 'Annual Salary',
+      payPer: 'Pay Per',
+      month: 'Month',
+      year: 'Year',
+      spend: 'Spend',
+      money: 'Money',
+      time: 'Time',
+      timeSaved: 'Time Saved',
+      frequency: 'Frequency',
+      howToRead: 'How to read this table',
+      instructions: 'Each cell shows how much you could reasonably spend on a tool or service that saves you a specific amount of time at a given frequency. Toggle between monthly and yearly to see the equivalent subscription cost. Toggle between money and time to see the value or time that you\'re saving. Based on 2,000 working hours per year (8 hrs × 250 days).',
+      starOnGithub: 'Star on GitHub',
+      basedOnXkcd: 'Based on xkcd #1205',
+      freq50day: '50/day',
+      freq5day: '5/day',
+      freqDaily: 'Daily',
+      freqWeekly: 'Weekly',
+      freqMonthly: 'Monthly',
+      freqYearly: 'Yearly',
+      time1sec: '1 second',
+      time5sec: '5 seconds',
+      time30sec: '30 seconds',
+      time1min: '1 minute',
+      time5min: '5 minutes',
+      time30min: '30 minutes',
+      time1hour: '1 hour',
+      time6hours: '6 hours',
+      time1day: '1 day',
+    },
+    es: {
+      title: '¿Vale la pena el tiempo?',
+      subtitle: 'Mostrándote cuánto gastar en algo que te ahorra tiempo',
+      annualSalary: 'Salario Anual',
+      payPer: 'Pago Por',
+      month: 'Mes',
+      year: 'Año',
+      spend: 'Gastar',
+      money: 'Dinero',
+      time: 'Tiempo',
+      timeSaved: 'Tiempo Ahorrado',
+      frequency: 'Frecuencia',
+      howToRead: 'Cómo leer esta tabla',
+      instructions: 'Cada celda muestra cuánto podrías gastar razonablemente en una herramienta o servicio que te ahorra una cantidad específica de tiempo con una frecuencia determinada. Alterna entre mensual y anual para ver el costo de suscripción equivalente. Alterna entre dinero y tiempo para ver el valor o tiempo que estás ahorrando. Basado en 2,000 horas de trabajo por año (8 hrs × 250 días).',
+      starOnGithub: 'Estrella en GitHub',
+      basedOnXkcd: 'Basado en xkcd #1205',
+      freq50day: '50/día',
+      freq5day: '5/día',
+      freqDaily: 'Diario',
+      freqWeekly: 'Semanal',
+      freqMonthly: 'Mensual',
+      freqYearly: 'Anual',
+      time1sec: '1 segundo',
+      time5sec: '5 segundos',
+      time30sec: '30 segundos',
+      time1min: '1 minuto',
+      time5min: '5 minutos',
+      time30min: '30 minutos',
+      time1hour: '1 hora',
+      time6hours: '6 horas',
+      time1day: '1 día',
+    },
+    fr: {
+      title: 'Est-ce que ça vaut le temps?',
+      subtitle: 'Vous montrant combien dépenser pour quelque chose qui vous fait gagner du temps',
+      annualSalary: 'Salaire Annuel',
+      payPer: 'Payer Par',
+      month: 'Mois',
+      year: 'An',
+      spend: 'Dépenser',
+      money: 'Argent',
+      time: 'Temps',
+      timeSaved: 'Temps Économisé',
+      frequency: 'Fréquence',
+      howToRead: 'Comment lire ce tableau',
+      instructions: 'Chaque cellule montre combien vous pourriez raisonnablement dépenser pour un outil ou service qui vous fait gagner un temps spécifique à une fréquence donnée. Basculez entre mensuel et annuel pour voir le coût d\'abonnement équivalent. Basculez entre argent et temps pour voir la valeur ou le temps que vous économisez. Basé sur 2 000 heures de travail par an (8 h × 250 jours).',
+      starOnGithub: 'Étoile sur GitHub',
+      basedOnXkcd: 'Basé sur xkcd #1205',
+      freq50day: '50/jour',
+      freq5day: '5/jour',
+      freqDaily: 'Quotidien',
+      freqWeekly: 'Hebdo',
+      freqMonthly: 'Mensuel',
+      freqYearly: 'Annuel',
+      time1sec: '1 seconde',
+      time5sec: '5 secondes',
+      time30sec: '30 secondes',
+      time1min: '1 minute',
+      time5min: '5 minutes',
+      time30min: '30 minutes',
+      time1hour: '1 heure',
+      time6hours: '6 heures',
+      time1day: '1 jour',
+    },
+    de: {
+      title: 'Lohnt sich die Zeit?',
+      subtitle: 'Zeigt dir, wie viel du für etwas ausgeben solltest, das dir Zeit spart',
+      annualSalary: 'Jahresgehalt',
+      payPer: 'Zahlung Pro',
+      month: 'Monat',
+      year: 'Jahr',
+      spend: 'Ausgeben',
+      money: 'Geld',
+      time: 'Zeit',
+      timeSaved: 'Gesparte Zeit',
+      frequency: 'Häufigkeit',
+      howToRead: 'So liest du diese Tabelle',
+      instructions: 'Jede Zelle zeigt, wie viel du vernünftigerweise für ein Werkzeug oder einen Dienst ausgeben könntest, der dir eine bestimmte Zeit bei einer bestimmten Häufigkeit spart. Wechsle zwischen monatlich und jährlich, um die entsprechenden Abonnementkosten zu sehen. Wechsle zwischen Geld und Zeit, um den Wert oder die Zeit zu sehen, die du sparst. Basierend auf 2.000 Arbeitsstunden pro Jahr (8 Std. × 250 Tage).',
+      starOnGithub: 'Stern auf GitHub',
+      basedOnXkcd: 'Basiert auf xkcd #1205',
+      freq50day: '50/Tag',
+      freq5day: '5/Tag',
+      freqDaily: 'Täglich',
+      freqWeekly: 'Wöchentlich',
+      freqMonthly: 'Monatlich',
+      freqYearly: 'Jährlich',
+      time1sec: '1 Sekunde',
+      time5sec: '5 Sekunden',
+      time30sec: '30 Sekunden',
+      time1min: '1 Minute',
+      time5min: '5 Minuten',
+      time30min: '30 Minuten',
+      time1hour: '1 Stunde',
+      time6hours: '6 Stunden',
+      time1day: '1 Tag',
+    },
+    pt: {
+      title: 'Vale a pena o tempo?',
+      subtitle: 'Mostrando quanto gastar em algo que economiza seu tempo',
+      annualSalary: 'Salário Anual',
+      payPer: 'Pagar Por',
+      month: 'Mês',
+      year: 'Ano',
+      spend: 'Gastar',
+      money: 'Dinheiro',
+      time: 'Tempo',
+      timeSaved: 'Tempo Economizado',
+      frequency: 'Frequência',
+      howToRead: 'Como ler esta tabela',
+      instructions: 'Cada célula mostra quanto você poderia razoavelmente gastar em uma ferramenta ou serviço que economiza uma quantidade específica de tempo em uma determinada frequência. Alterne entre mensal e anual para ver o custo de assinatura equivalente. Alterne entre dinheiro e tempo para ver o valor ou tempo que você está economizando. Baseado em 2.000 horas de trabalho por ano (8 hrs × 250 dias).',
+      starOnGithub: 'Estrela no GitHub',
+      basedOnXkcd: 'Baseado em xkcd #1205',
+      freq50day: '50/dia',
+      freq5day: '5/dia',
+      freqDaily: 'Diário',
+      freqWeekly: 'Semanal',
+      freqMonthly: 'Mensal',
+      freqYearly: 'Anual',
+      time1sec: '1 segundo',
+      time5sec: '5 segundos',
+      time30sec: '30 segundos',
+      time1min: '1 minuto',
+      time5min: '5 minutos',
+      time30min: '30 minutos',
+      time1hour: '1 hora',
+      time6hours: '6 horas',
+      time1day: '1 dia',
+    },
+    zh: {
+      title: '值得花时间吗？',
+      subtitle: '告诉你应该花多少钱购买节省时间的工具',
+      annualSalary: '年薪',
+      payPer: '支付周期',
+      month: '月',
+      year: '年',
+      spend: '花费',
+      money: '金钱',
+      time: '时间',
+      timeSaved: '节省时间',
+      frequency: '频率',
+      howToRead: '如何阅读此表',
+      instructions: '每个单元格显示您可以合理地花多少钱购买一个工具或服务，以特定频率节省特定时间。在月度和年度之间切换以查看相应的订阅费用。在金钱和时间之间切换以查看您节省的价值或时间。基于每年2,000个工作小时（8小时×250天）。',
+      starOnGithub: '在GitHub上加星',
+      basedOnXkcd: '基于 xkcd #1205',
+      freq50day: '50次/天',
+      freq5day: '5次/天',
+      freqDaily: '每天',
+      freqWeekly: '每周',
+      freqMonthly: '每月',
+      freqYearly: '每年',
+      time1sec: '1秒',
+      time5sec: '5秒',
+      time30sec: '30秒',
+      time1min: '1分钟',
+      time5min: '5分钟',
+      time30min: '30分钟',
+      time1hour: '1小时',
+      time6hours: '6小时',
+      time1day: '1天',
+    },
+    ja: {
+      title: '時間をかける価値はある？',
+      subtitle: '時間を節約するものにいくら使うべきかを表示します',
+      annualSalary: '年収',
+      payPer: '支払い単位',
+      month: '月',
+      year: '年',
+      spend: '支出',
+      money: 'お金',
+      time: '時間',
+      timeSaved: '節約時間',
+      frequency: '頻度',
+      howToRead: 'この表の読み方',
+      instructions: '各セルは、特定の頻度で特定の時間を節約するツールやサービスに、合理的にいくら使えるかを示しています。月額と年額を切り替えて、相当するサブスクリプション費用を確認できます。お金と時間を切り替えて、節約できる価値や時間を確認できます。年間2,000労働時間（8時間×250日）に基づいています。',
+      starOnGithub: 'GitHubでスター',
+      basedOnXkcd: 'xkcd #1205に基づく',
+      freq50day: '50回/日',
+      freq5day: '5回/日',
+      freqDaily: '毎日',
+      freqWeekly: '毎週',
+      freqMonthly: '毎月',
+      freqYearly: '毎年',
+      time1sec: '1秒',
+      time5sec: '5秒',
+      time30sec: '30秒',
+      time1min: '1分',
+      time5min: '5分',
+      time30min: '30分',
+      time1hour: '1時間',
+      time6hours: '6時間',
+      time1day: '1日',
+    },
+    it: {
+      title: 'Vale la pena il tempo?',
+      subtitle: 'Ti mostra quanto spendere per qualcosa che ti fa risparmiare tempo',
+      annualSalary: 'Stipendio Annuale',
+      payPer: 'Pagamento Per',
+      month: 'Mese',
+      year: 'Anno',
+      spend: 'Spendere',
+      money: 'Denaro',
+      time: 'Tempo',
+      timeSaved: 'Tempo Risparmiato',
+      frequency: 'Frequenza',
+      howToRead: 'Come leggere questa tabella',
+      instructions: 'Ogni cella mostra quanto potresti ragionevolmente spendere per uno strumento o servizio che ti fa risparmiare una specifica quantità di tempo con una determinata frequenza. Passa tra mensile e annuale per vedere il costo di abbonamento equivalente. Passa tra denaro e tempo per vedere il valore o il tempo che stai risparmiando. Basato su 2.000 ore lavorative all\'anno (8 ore × 250 giorni).',
+      starOnGithub: 'Stella su GitHub',
+      basedOnXkcd: 'Basato su xkcd #1205',
+      freq50day: '50/giorno',
+      freq5day: '5/giorno',
+      freqDaily: 'Giornaliero',
+      freqWeekly: 'Settimanale',
+      freqMonthly: 'Mensile',
+      freqYearly: 'Annuale',
+      time1sec: '1 secondo',
+      time5sec: '5 secondi',
+      time30sec: '30 secondi',
+      time1min: '1 minuto',
+      time5min: '5 minuti',
+      time30min: '30 minuti',
+      time1hour: '1 ora',
+      time6hours: '6 ore',
+      time1day: '1 giorno',
+    },
+    nl: {
+      title: 'Is het de tijd waard?',
+      subtitle: 'Toont hoeveel je kunt uitgeven aan iets dat je tijd bespaart',
+      annualSalary: 'Jaarsalaris',
+      payPer: 'Betaling Per',
+      month: 'Maand',
+      year: 'Jaar',
+      spend: 'Uitgeven',
+      money: 'Geld',
+      time: 'Tijd',
+      timeSaved: 'Bespaarde Tijd',
+      frequency: 'Frequentie',
+      howToRead: 'Hoe deze tabel te lezen',
+      instructions: 'Elke cel toont hoeveel je redelijkerwijs zou kunnen uitgeven aan een tool of dienst die je een specifieke hoeveelheid tijd bespaart met een bepaalde frequentie. Schakel tussen maandelijks en jaarlijks om de equivalente abonnementskosten te zien. Schakel tussen geld en tijd om de waarde of tijd te zien die je bespaart. Gebaseerd op 2.000 werkuren per jaar (8 uur × 250 dagen).',
+      starOnGithub: 'Ster op GitHub',
+      basedOnXkcd: 'Gebaseerd op xkcd #1205',
+      freq50day: '50/dag',
+      freq5day: '5/dag',
+      freqDaily: 'Dagelijks',
+      freqWeekly: 'Wekelijks',
+      freqMonthly: 'Maandelijks',
+      freqYearly: 'Jaarlijks',
+      time1sec: '1 seconde',
+      time5sec: '5 seconden',
+      time30sec: '30 seconden',
+      time1min: '1 minuut',
+      time5min: '5 minuten',
+      time30min: '30 minuten',
+      time1hour: '1 uur',
+      time6hours: '6 uur',
+      time1day: '1 dag',
+    },
+    ru: {
+      title: 'Стоит ли это времени?',
+      subtitle: 'Показывает, сколько можно потратить на то, что экономит ваше время',
+      annualSalary: 'Годовая зарплата',
+      payPer: 'Оплата за',
+      month: 'Месяц',
+      year: 'Год',
+      spend: 'Тратить',
+      money: 'Деньги',
+      time: 'Время',
+      timeSaved: 'Сэкономленное время',
+      frequency: 'Частота',
+      howToRead: 'Как читать эту таблицу',
+      instructions: 'Каждая ячейка показывает, сколько вы можете разумно потратить на инструмент или услугу, которая экономит вам определённое количество времени с заданной частотой. Переключайтесь между месячным и годовым режимом, чтобы увидеть эквивалентную стоимость подписки. Переключайтесь между деньгами и временем, чтобы увидеть ценность или время, которое вы экономите. Основано на 2000 рабочих часов в год (8 ч × 250 дней).',
+      starOnGithub: 'Звезда на GitHub',
+      basedOnXkcd: 'На основе xkcd #1205',
+      freq50day: '50/день',
+      freq5day: '5/день',
+      freqDaily: 'Ежедневно',
+      freqWeekly: 'Еженедельно',
+      freqMonthly: 'Ежемесячно',
+      freqYearly: 'Ежегодно',
+      time1sec: '1 секунда',
+      time5sec: '5 секунд',
+      time30sec: '30 секунд',
+      time1min: '1 минута',
+      time5min: '5 минут',
+      time30min: '30 минут',
+      time1hour: '1 час',
+      time6hours: '6 часов',
+      time1day: '1 день',
+    },
+  };
+
+  // Detect user locale and get translations
+  const userLocale = navigator.language || 'en';
+  const lang = userLocale.split('-')[0];
+  const t = translations[lang] || translations.en;
+
+  // Currency mapping by region
+  function getCurrencyForLocale(locale: string): string {
+    const currencyMap: Record<string, string> = {
+      // Americas
+      'en-US': 'USD', 'en-CA': 'CAD', 'es-MX': 'MXN',
+      'es-AR': 'ARS', 'es-CL': 'CLP', 'es-CO': 'COP',
+      'pt-BR': 'BRL',
+      // Europe
+      'en-GB': 'GBP', 'en-IE': 'EUR',
+      'de-DE': 'EUR', 'de-AT': 'EUR', 'de-CH': 'CHF',
+      'fr-FR': 'EUR', 'fr-BE': 'EUR', 'fr-CH': 'CHF',
+      'es-ES': 'EUR', 'pt-PT': 'EUR',
+      'it-IT': 'EUR', 'nl-NL': 'EUR', 'nl-BE': 'EUR',
+      // Asia
+      'ja-JP': 'JPY',
+      'zh-CN': 'CNY', 'zh-TW': 'TWD', 'zh-HK': 'HKD',
+      // Russia
+      'ru-RU': 'RUB',
+      // Oceania
+      'en-AU': 'AUD', 'en-NZ': 'NZD',
+    };
+
+    // Try exact match first
+    if (currencyMap[locale]) {
+      return currencyMap[locale];
+    }
+
+    // Fallback by language code
+    const langCode = locale.split('-')[0];
+    const langDefaults: Record<string, string> = {
+      'en': 'USD',
+      'es': 'EUR',
+      'fr': 'EUR',
+      'de': 'EUR',
+      'pt': 'EUR',
+      'it': 'EUR',
+      'nl': 'EUR',
+      'ja': 'JPY',
+      'zh': 'CNY',
+      'ru': 'RUB',
+    };
+
+    return langDefaults[langCode] || 'USD';
+  }
+
+  const userCurrency = getCurrencyForLocale(userLocale);
+
+  // Get currency symbol for display in salary input
+  function getCurrencySymbol(currency: string): string {
+    const symbols: Record<string, string> = {
+      'USD': '$', 'CAD': '$', 'MXN': '$',
+      'ARS': '$', 'CLP': '$', 'COP': '$',
+      'BRL': '$',
+      'GBP': '£', 'EUR': '€', 'CHF': 'Fr',
+      'JPY': '¥', 'CNY': '¥', 'TWD': '$', 'HKD': '$',
+      'RUB': '₽',
+      'AUD': '$', 'NZD': '$',
+    };
+    return symbols[currency] || '$';
+  }
+
+  const currencySymbol = getCurrencySymbol(userCurrency);
+
+  // Frequency and time label keys for translation
+  const freqKeys = ['freq50day', 'freq5day', 'freqDaily', 'freqWeekly', 'freqMonthly', 'freqYearly'] as const;
+  const timeKeys = ['time1sec', 'time5sec', 'time30sec', 'time1min', 'time5min', 'time30min', 'time1hour', 'time6hours', 'time1day'] as const;
+
+  // Apply translations to the page
+  function applyTranslations() {
+    // Update elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n') as keyof Translations;
+      if (t[key]) {
+        el.textContent = t[key];
+      }
+    });
+
+    // Update currency symbol
+    const currencyEl = document.getElementById('currency-symbol');
+    if (currencyEl) {
+      currencyEl.textContent = currencySymbol;
+    }
+
+    // Update frequency headers
+    document.querySelectorAll<HTMLTableCellElement>('.freq-header').forEach(el => {
+      const index = parseInt(el.dataset.freqIndex || '0', 10);
+      if (freqKeys[index]) {
+        el.textContent = t[freqKeys[index]];
+      }
+    });
+
+    // Update time row headers
+    document.querySelectorAll<HTMLTableCellElement>('.time-header').forEach(el => {
+      const index = parseInt(el.dataset.timeIndex || '0', 10);
+      if (timeKeys[index]) {
+        el.textContent = t[timeKeys[index]];
+      }
+    });
+  }
+
   const salaryInput = document.getElementById('salary') as HTMLInputElement;
   const valueCells = document.querySelectorAll<HTMLTableCellElement>('.value-cell');
   const periodToggleBtns = document.querySelectorAll<HTMLButtonElement>('.billing-toggle .toggle-btn');
@@ -501,21 +968,21 @@ const timeSavings = [
 
   function formatCurrency(value: number): string {
     if (value >= 1000000) {
-      return '$' + (value / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+      return currencySymbol + (value / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
     }
     if (value >= 10000) {
-      return '$' + Math.round(value / 1000) + 'k';
+      return currencySymbol + Math.round(value / 1000) + 'k';
     }
     if (value >= 1000) {
-      return '$' + (value / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+      return currencySymbol + (value / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
     }
     if (value >= 1) {
-      return '$' + Math.round(value);
+      return currencySymbol + Math.round(value);
     }
     if (value >= 0.01) {
-      return '$' + value.toFixed(2);
+      return currencySymbol + value.toFixed(2);
     }
-    return '$0';
+    return currencySymbol + '0';
   }
 
   /**
@@ -809,6 +1276,7 @@ const timeSavings = [
     });
   });
 
-  // Initial calculation
+  // Apply translations and initial calculation
+  applyTranslations();
   updateTable();
 </script>
