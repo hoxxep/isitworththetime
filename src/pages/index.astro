@@ -1104,7 +1104,7 @@ const timeSavings = [
     const HIGH_FADE_START = salary * 0.05;
     const HIGH_FADE_END = salary * 2.00;
     const highRaw = 1 - (Math.log(value) - Math.log(HIGH_FADE_START)) / (Math.log(HIGH_FADE_END) - Math.log(HIGH_FADE_START));
-    const highOpacity = Math.min(1, Math.max(0.1, highRaw));
+    const highOpacity = Math.min(1, Math.max(0.2, highRaw));
 
     // Fade low values (below $1, fading to min at $0.01)
     const LOW_FADE_START = 5;
@@ -1129,7 +1129,7 @@ const timeSavings = [
     let lowOpacity = 1;
     if (seconds < LOW_FADE_START) {
       const lowRaw = (seconds - LOW_FADE_END) / (LOW_FADE_START - LOW_FADE_END);
-      lowOpacity = Math.min(1, Math.max(0.25, lowRaw));
+      lowOpacity = Math.min(1, Math.max(0.2, lowRaw));
     }
 
     // Fade high values (unrealistic time savings)
@@ -1140,7 +1140,7 @@ const timeSavings = [
     if (seconds > HIGH_FADE_START) {
       const highRaw = 1 - (Math.log(seconds) - Math.log(HIGH_FADE_START)) /
                           (Math.log(HIGH_FADE_END) - Math.log(HIGH_FADE_START));
-      highOpacity = Math.min(1, Math.max(0.15, highRaw));
+      highOpacity = Math.min(1, Math.max(0.2, highRaw));
     }
 
     return Math.min(lowOpacity, highOpacity);
