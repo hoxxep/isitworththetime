@@ -1,0 +1,44 @@
+---
+import "../global.css";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const {
+    title = "Time Saver Calculator",
+    description = "Calculate how much to spend on time-saving tools based on your salary and the time you'll save.",
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const siteUrl = Astro.site;
+const canonicalUrl = siteUrl ? new URL(currentPath, siteUrl).toString() : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <meta name="description" content={description} />
+
+    <meta name="og:title" content={title} />
+    <meta name="og:description" content={description} />
+    <meta name="og:type" content="website" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preload" href="/fonts/subset-IBMPlexSerif-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/subset-IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/subset-IBMPlexSans-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/subset-IBMPlexSans-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+<body>
+<slot />
+</body>
+</html>

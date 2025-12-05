@@ -1,0 +1,639 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+// Columns: frequency (how often you do the task)
+const frequencies = [
+  { label: '50/day', multiplier: 50 * 250 },
+  { label: '5/day', multiplier: 5 * 250 },
+  { label: 'Daily', multiplier: 250 },
+  { label: 'Weekly', multiplier: 50 },
+  { label: 'Monthly', multiplier: 12 },
+  { label: 'Yearly', multiplier: 1 },
+];
+
+// Rows: time saved per occurrence
+const timeSavings = [
+  { label: '1 second', seconds: 1 },
+  { label: '5 seconds', seconds: 5 },
+  { label: '30 seconds', seconds: 30 },
+  { label: '1 minute', seconds: 60 },
+  { label: '5 minutes', seconds: 300 },
+  { label: '30 minutes', seconds: 1800 },
+  { label: '1 hour', seconds: 3600 },
+  { label: '6 hours', seconds: 21600 },
+  { label: '1 day', seconds: 28800 },
+];
+---
+
+<Layout title="Time Saver Calculator">
+  <main class="min-h-screen">
+    <div class="site-section py-12 lg:py-20">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl lg:text-5xl font-semibold text-slate-800 dark:text-slate-100 mb-2">
+          Time Saver Calculator
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+          How much should you spend on something that saves you time?
+        </p>
+      </header>
+
+      <div class="table-controls">
+        <div class="salary-input-container">
+          <label for="salary" class="block text-slate-700 dark:text-slate-300 font-medium mb-2">
+            Annual Salary
+          </label>
+          <div class="salary-input-wrapper">
+            <span class="salary-prefix">$</span>
+            <input
+              type="text"
+              id="salary"
+              inputmode="numeric"
+              value="100,000"
+              class="salary-input"
+              placeholder="100,000"
+            />
+          </div>
+        </div>
+
+        <div class="billing-toggle-container">
+          <label class="block text-slate-700 dark:text-slate-300 font-medium mb-2">Pay per</label>
+          <div class="billing-toggle">
+            <button type="button" class="toggle-btn active" data-period="monthly">Month</button>
+            <button type="button" class="toggle-btn" data-period="annual">Year</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-wrapper">
+          <table class="time-table">
+            <thead>
+              <tr>
+                <th class="corner-cell">
+                  <span class="time-label">Time Saved</span>
+                  <span class="freq-label">Frequency</span>
+                </th>
+                {frequencies.map(freq => (
+                  <th class="freq-header">{freq.label}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {timeSavings.map((time) => (
+                <tr>
+                  <th class="time-header">{time.label}</th>
+                  {frequencies.map((freq) => (
+                    <td
+                      class="value-cell"
+                      data-freq-multiplier={freq.multiplier}
+                      data-time-seconds={time.seconds}
+                    >
+                      <span class="value">—</span>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center text-slate-600 dark:text-slate-400">
+        <p class="font-medium mb-2">How to read this table</p>
+        <p class="text-sm max-w-xl mx-auto">
+          Each cell shows how much you could reasonably spend on a tool or service
+          that saves you a specific amount of time at a given frequency.
+          Toggle between monthly and yearly to see the equivalent subscription cost.
+          Based on 2,000 working hours per year (8 hrs × 250 days).
+        </p>
+      </div>
+
+      <footer class="footer">
+        <a href="https://xkcd.com/1205/" target="_blank" rel="noopener noreferrer" class="footer-link">
+          <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          Based on xkcd #1205
+        </a>
+        <a href="https://github.com/liamstevens111/time-saver" target="_blank" rel="noopener noreferrer" class="footer-link github-link">
+          <svg class="footer-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          Star on GitHub
+        </a>
+      </footer>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .table-controls {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .salary-input-container {
+    flex-shrink: 0;
+  }
+
+  .billing-toggle-container {
+    flex-shrink: 0;
+  }
+
+  .salary-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(var(--accent-border));
+    border-radius: 8px;
+    background: rgb(var(--bg-surface));
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .salary-input-wrapper:focus-within {
+    border-color: rgb(var(--accent-blue));
+    box-shadow: 0 0 0 4px rgba(var(--accent-blue), 0.1);
+  }
+
+  .salary-prefix {
+    padding-left: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(var(--accent-grey-light));
+    user-select: none;
+  }
+
+  .salary-input {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.625rem 0.75rem 0.625rem 0.25rem;
+    border: none;
+    background: transparent;
+    color: rgb(var(--accent-grey));
+    width: 120px;
+    outline: none;
+  }
+
+  .billing-toggle {
+    display: flex;
+    gap: 0;
+  }
+
+  .toggle-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 2px solid rgb(var(--accent-border));
+    background: rgb(var(--bg-surface));
+    color: rgb(var(--accent-grey));
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .toggle-btn:first-child {
+    border-radius: 8px 0 0 8px;
+    border-right: 1px solid rgb(var(--accent-border));
+  }
+
+  .toggle-btn:last-child {
+    border-radius: 0 8px 8px 0;
+    border-left: 1px solid rgb(var(--accent-border));
+  }
+
+  .toggle-btn:hover:not(.active) {
+    background: rgb(var(--bg-grey));
+  }
+
+  .toggle-btn.active {
+    background: rgb(var(--bg-blue-light));
+    border-color: rgb(var(--accent-blue), 0.2);
+    color: rgb(var(--accent-blue));
+  }
+
+  .table-container {
+    background: rgb(var(--bg-surface));
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+  }
+
+  .time-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .time-table th,
+  .time-table td {
+    padding: 0.875rem 0.75rem;
+    text-align: center;
+    font-size: 0.875rem;
+  }
+
+  .corner-cell {
+    position: relative;
+    background: linear-gradient(25deg, rgb(var(--bg-grey)) 0%, rgb(var(--bg-blue-light)) 100%);
+    min-width: 100px;
+    min-height: 40px;
+  }
+
+  .corner-cell .freq-label,
+  .corner-cell .time-label {
+    position: absolute;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgb(var(--accent-grey));
+  }
+
+  .corner-cell .time-label {
+    bottom: 8px;
+    left: 8px;
+  }
+
+  .corner-cell .freq-label {
+    top: 8px;
+    right: 8px;
+  }
+
+  .freq-header {
+    background: rgb(var(--bg-blue-light));
+    color: rgb(var(--accent-blue));
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    min-width: 4rem;
+  }
+
+  .freq-header.highlight {
+    background: rgb(var(--accent-blue));
+    color: white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .freq-header.highlight {
+      background: rgb(37, 99, 180);
+    }
+  }
+
+  .time-header {
+    background: rgb(var(--bg-grey));
+    color: rgb(var(--accent-grey));
+    font-weight: 600;
+    text-align: left;
+    padding-left: 1rem;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .time-header.highlight {
+    background: rgb(var(--accent-grey));
+    color: white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .time-header.highlight {
+      background: rgb(71, 85, 105);
+    }
+  }
+
+  .corner-cell, .time-header {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+
+  .value-cell {
+    background: rgb(var(--bg-surface));
+    transition: background-color 0.15s ease;
+  }
+
+  .value-cell:hover {
+    background: rgb(var(--bg-blue-light));
+  }
+
+  .value-cell .value {
+    font-weight: 500;
+    color: rgb(var(--accent-grey));
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Color coding based on value magnitude */
+  .value-cell.tier-1 .value { color: #64748b; }
+  .value-cell.tier-2 .value { color: #059669; }
+  .value-cell.tier-3 .value { color: #2563eb; }
+  .value-cell.tier-4 .value { color: #7c3aed; }
+  .value-cell.tier-5 .value { color: #db2777; }
+
+  .value-cell.tier-1 { background: rgba(100, 116, 139, 0.04); }
+  .value-cell.tier-2 { background: rgba(5, 150, 105, 0.06); }
+  .value-cell.tier-3 { background: rgba(37, 99, 235, 0.06); }
+  .value-cell.tier-4 { background: rgba(124, 58, 237, 0.06); }
+  .value-cell.tier-5 { background: rgba(219, 39, 119, 0.06); }
+
+  .value-cell.tier-1:hover { background: rgba(100, 116, 139, 0.1); }
+  .value-cell.tier-2:hover { background: rgba(5, 150, 105, 0.12); }
+  .value-cell.tier-3:hover { background: rgba(37, 99, 235, 0.12); }
+  .value-cell.tier-4:hover { background: rgba(124, 58, 237, 0.12); }
+  .value-cell.tier-5:hover { background: rgba(219, 39, 119, 0.12); }
+
+  @media (prefers-color-scheme: dark) {
+    .value-cell.tier-1 .value { color: #94a3b8; }
+    .value-cell.tier-2 .value { color: #34d399; }
+    .value-cell.tier-3 .value { color: #60a5fa; }
+    .value-cell.tier-4 .value { color: #a78bfa; }
+    .value-cell.tier-5 .value { color: #f472b6; }
+
+    .value-cell.tier-1 { background: rgba(148, 163, 184, 0.08); }
+    .value-cell.tier-2 { background: rgba(52, 211, 153, 0.1); }
+    .value-cell.tier-3 { background: rgba(96, 165, 250, 0.1); }
+    .value-cell.tier-4 { background: rgba(167, 139, 250, 0.1); }
+    .value-cell.tier-5 { background: rgba(244, 114, 182, 0.1); }
+
+    .value-cell.tier-1:hover { background: rgba(148, 163, 184, 0.15); }
+    .value-cell.tier-2:hover { background: rgba(52, 211, 153, 0.18); }
+    .value-cell.tier-3:hover { background: rgba(96, 165, 250, 0.18); }
+    .value-cell.tier-4:hover { background: rgba(167, 139, 250, 0.18); }
+    .value-cell.tier-5:hover { background: rgba(244, 114, 182, 0.18); }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(var(--accent-grey));
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid rgb(var(--accent-border));
+    background: rgb(var(--bg-surface));
+    transition: all 0.15s ease;
+  }
+
+  .footer-link:hover {
+    border-color: rgb(var(--accent-grey-light));
+    background: rgb(var(--bg-grey));
+  }
+
+  .github-link:hover {
+    border-color: rgb(var(--accent-blue));
+    color: rgb(var(--accent-blue));
+  }
+
+  .footer-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .table-controls {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .salary-input-container,
+    .billing-toggle-container {
+      text-align: center;
+    }
+
+    .salary-input-container .flex {
+      justify-content: center;
+    }
+
+    .billing-toggle {
+      justify-content: stretch;
+    }
+
+    .billing-toggle button {
+      flex: 1;
+    }
+
+    .table-container {
+      padding: 1rem;
+      border-radius: 12px;
+    }
+
+    .salary-input {
+      font-size: 1rem;
+      width: 110px;
+    }
+
+    .corner-cell .time-label {
+      bottom: 4px;
+      left: 8px;
+    }
+
+    .corner-cell .freq-label {
+      top: 4px;
+      right: 8px;
+    }
+
+    .time-table th,
+    .time-table td {
+      padding: 0.625rem 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .footer {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-link {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  const WORK_HOURS_PER_YEAR = 2000;
+
+  const salaryInput = document.getElementById('salary') as HTMLInputElement;
+  const valueCells = document.querySelectorAll<HTMLTableCellElement>('.value-cell');
+  const toggleBtns = document.querySelectorAll<HTMLButtonElement>('.toggle-btn');
+
+  let billingPeriod: 'annual' | 'monthly' = 'monthly';
+
+  function parseSalary(value: string): number {
+    return parseInt(value.replace(/[^0-9]/g, ''), 10) || 0;
+  }
+
+  function formatCurrency(value: number): string {
+    if (value >= 1000000) {
+      return '$' + (value / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    }
+    if (value >= 10000) {
+      return '$' + Math.round(value / 1000) + 'k';
+    }
+    if (value >= 1000) {
+      return '$' + (value / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    }
+    if (value >= 1) {
+      return '$' + Math.round(value);
+    }
+    if (value >= 0.01) {
+      return '$' + value.toFixed(2);
+    }
+    return '$0';
+  }
+
+  function formatSalaryInput(value: string): string {
+    const num = parseSalary(value);
+    if (num === 0) return '';
+    return num.toLocaleString('en-US');
+  }
+
+  function getOpacity(value: number, salary: number): number {
+    // Fade high values
+    const HIGH_FADE_START = salary * 0.05;
+    const HIGH_FADE_END = salary;
+    const highRaw = 1 - (Math.log(value) - Math.log(HIGH_FADE_START)) / (Math.log(HIGH_FADE_END) - Math.log(HIGH_FADE_START));
+    const highOpacity = Math.min(1, Math.max(0.2, highRaw));
+
+    // Fade low values (below $1, fading to min at $0.01)
+    const LOW_FADE_START = 5;
+    const LOW_FADE_END = 1;
+    let lowOpacity = 1;
+    if (value < LOW_FADE_START) {
+      const lowRaw = (value - LOW_FADE_END) / (LOW_FADE_START - LOW_FADE_END);
+      lowOpacity = Math.min(1, Math.max(0.2, lowRaw));
+    }
+
+    return Math.min(highOpacity, lowOpacity);
+  }
+
+  function getTier(value: number, salary: number): string {
+    // normalise the tier levels to 100k
+    const ratio = 100000 * (value / salary);
+    if (ratio < 10) return 'tier-1';
+    if (ratio < 100) return 'tier-2';
+    if (ratio < 1000) return 'tier-3';
+    if (ratio < 10000) return 'tier-4';
+    return 'tier-5';
+  }
+
+  function updateTable() {
+    const salary = parseSalary(salaryInput.value);
+    const hourlyRate = salary / WORK_HOURS_PER_YEAR;
+    const divisor = billingPeriod === 'monthly' ? 12 : 1;
+
+    valueCells.forEach(cell => {
+      const freqMultiplier = parseInt(cell.dataset.freqMultiplier || '0', 10);
+      const timeSeconds = parseInt(cell.dataset.timeSeconds || '0', 10);
+
+      // Total time saved in hours per year
+      const totalHoursPerYear = (freqMultiplier * timeSeconds) / 3600;
+
+      // Value of time saved (annual)
+      const annualValue = hourlyRate * totalHoursPerYear;
+
+      // Display value (divided for monthly)
+      const displayValue = annualValue / divisor;
+
+      const valueSpan = cell.querySelector('.value') as HTMLElement;
+      if (valueSpan) {
+        valueSpan.textContent = salary > 0 ? formatCurrency(displayValue) : '—';
+        // Use annual value for opacity/tier to keep consistent visual hierarchy
+        valueSpan.style.opacity = salary > 0 ? String(getOpacity(annualValue, salary)) : '1';
+      }
+
+      // Update tier class for color coding (based on annual value for consistency)
+      cell.classList.remove('tier-1', 'tier-2', 'tier-3', 'tier-4', 'tier-5');
+      if (salary > 0 && annualValue > 0) {
+        cell.classList.add(getTier(annualValue, salary));
+      }
+    });
+  }
+
+  salaryInput.addEventListener('input', (e) => {
+    const target = e.target as HTMLInputElement;
+    const cursorPos = target.selectionStart || 0;
+    const oldLength = target.value.length;
+
+    target.value = formatSalaryInput(target.value);
+
+    // Adjust cursor position after formatting
+    const newLength = target.value.length;
+    const newCursorPos = Math.max(0, cursorPos + (newLength - oldLength));
+    target.setSelectionRange(newCursorPos, newCursorPos);
+
+    updateTable();
+  });
+
+  salaryInput.addEventListener('focus', () => {
+    salaryInput.select();
+  });
+
+  // Toggle button handlers
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const period = btn.dataset.period as 'annual' | 'monthly';
+      if (period === billingPeriod) return;
+
+      billingPeriod = period;
+
+      // Update active state
+      toggleBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      updateTable();
+    });
+  });
+
+  // Header highlight on cell hover
+  const freqHeaders = document.querySelectorAll<HTMLTableCellElement>('.freq-header');
+  const timeHeaders = document.querySelectorAll<HTMLTableCellElement>('.time-header');
+
+  valueCells.forEach(cell => {
+    cell.addEventListener('mouseenter', () => {
+      const row = cell.parentElement as HTMLTableRowElement;
+      const cellIndex = Array.from(row.cells).indexOf(cell);
+      const rowIndex = row.rowIndex - 1; // -1 for thead row
+
+      // Highlight column header (cellIndex includes the row header, so -1)
+      if (cellIndex > 0 && freqHeaders[cellIndex - 1]) {
+        freqHeaders[cellIndex - 1].classList.add('highlight');
+      }
+
+      // Highlight row header
+      if (timeHeaders[rowIndex]) {
+        timeHeaders[rowIndex].classList.add('highlight');
+      }
+    });
+
+    cell.addEventListener('mouseleave', () => {
+      freqHeaders.forEach(h => h.classList.remove('highlight'));
+      timeHeaders.forEach(h => h.classList.remove('highlight'));
+    });
+  });
+
+  // Initial calculation
+  updateTable();
+</script>
