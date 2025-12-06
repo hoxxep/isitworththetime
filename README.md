@@ -1,8 +1,8 @@
 # Is it worth the time?
 
-Compute how much time or money to spend on something that saves you time. Based on [xkcd #1205: Is It Worth the Time?](https://xkcd.com/1205/)
+Compute how much time or money to spend on something that saves you time.
 
-[isitworththetime.com](https://isitworththetime.com)
+[isitworththetime.com](https://isitworththetime.com), based on the much loved [xkcd #1205: Is It Worth the Time?](https://xkcd.com/1205/)
 
 [![Screenshot](https://github.com/hoxxep/isitworththetime/blob/master/public/screenshot.png)](https://isitworththetime.com)
 
