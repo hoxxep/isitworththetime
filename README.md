@@ -1,14 +1,10 @@
 # Is it worth the time?
 
-An Astro-based single-page site for computing how much to spend on something that saves you time. Based on xkcd #1205: [Is It Worth the Time?](https://xkcd.com/1205/)
+Compute how much time or money to spend on something that saves you time. Based on [xkcd #1205: Is It Worth the Time?](https://xkcd.com/1205/)
 
-A user inputs their annual salary. We then generate a table of how much to spend on time-saving services based on different time horizons. The table is effectively a matrix of:
-- How often you do the task: 50/day, 5/day, daily, weekly, monthly, yearly
-- How much time you save: 1 second, 5 seconds, 30 seconds, 1 minute, 5 minutes, 30 minutes, 1 hour, 6 hours, 1 day
+[isitworththetime.com](https://isitworththetime.com)
 
-The formula: `(Annual Salary / 2000 hours) × (Time Saved × Frequency) = Value of time saved per year`
-
-We assume a user's work year is 2,000 hours (8 hours × 250 working days per year).
+[![Screenshot](https://github.com/hoxxep/isitworththetime/blob/master/public/screenshot.png)](https://isitworththetime.com)
 
 ## Dev Commands
 
