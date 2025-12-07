@@ -1,24 +1,36 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- xkcd-style calendar day 1 favicon -->
-
-  <!-- Calendar body - wobbly rectangle -->
-  <path d="M8 16 Q7 16 7 17 L6 54 Q6 57 9 57 L55 56 Q58 56 58 53 L57 17 Q57 15 55 15 L9 16 Z"
-        fill="white" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Calendar header bar - wobbly -->
-  <path d="M7 16 Q6 15 7 14 L8 10 Q9 8 11 8 L53 7 Q56 7 56 10 L57 15 Q57 16 56 16"
-        fill="black" stroke="black" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Binding rings - hand drawn circles -->
-  <ellipse cx="18" cy="8" rx="3.5" ry="4" fill="none" stroke="black" stroke-width="2.5"/>
-  <ellipse cx="32" cy="7" rx="3.5" ry="4" fill="none" stroke="black" stroke-width="2.5"/>
-  <ellipse cx="46" cy="8" rx="3.5" ry="4" fill="none" stroke="black" stroke-width="2.5"/>
-
-  <!-- Number "1" - simple wobbly xkcd style -->
-  <!-- Serif/flag at top -->
-  <path d="M24 26 Q26 24 28 25 L32 23" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- Main stem -->
-  <path d="M31 24 Q32 35 31 48 Q31 50 32 51" stroke="black" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-  <!-- Bottom serif -->
-  <path d="M24 50 Q28 51 32 50 Q36 51 40 50" stroke="black" stroke-width="3" stroke-linecap="round" fill="none"/>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_682_1209)">
+<mask id="mask0_682_1209" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+<rect width="32" height="32" rx="8" fill="white"/>
+</mask>
+<g mask="url(#mask0_682_1209)">
+<rect width="32" height="32" fill="white"/>
+</g>
+<mask id="mask1_682_1209" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+<rect width="32" height="32" rx="8" fill="white"/>
+</mask>
+<g mask="url(#mask1_682_1209)">
+<rect x="24" width="8" height="8" fill="#64748B" fill-opacity="0.3"/>
+<rect x="16" width="8" height="8" fill="#64748B" fill-opacity="0.5"/>
+<rect x="24" y="8" width="8" height="8" fill="#64748B" fill-opacity="0.5"/>
+<rect x="8" width="8" height="8" fill="#059669" fill-opacity="0.7"/>
+<rect x="16" y="8" width="8" height="8" fill="#059669" fill-opacity="0.7"/>
+<rect x="24" y="16" width="8" height="8" fill="#059669" fill-opacity="0.7"/>
+<rect width="8" height="8" fill="#2563EB" fill-opacity="0.9"/>
+<rect x="8" y="8" width="8" height="8" fill="#2563EB" fill-opacity="0.9"/>
+<rect x="16" y="16" width="8" height="8" fill="#2563EB" fill-opacity="0.9"/>
+<rect y="8" width="8" height="8" fill="#7C3AED" fill-opacity="0.7"/>
+<rect x="8" y="16" width="8" height="8" fill="#7C3AED" fill-opacity="0.7"/>
+<rect y="16" width="8" height="8" fill="#DB2777" fill-opacity="0.5"/>
+<rect x="8" y="24" width="8" height="8" fill="#DB2777" fill-opacity="0.5"/>
+<rect y="24" width="8" height="8" fill="#DB2777" fill-opacity="0.3"/>
+<rect x="16" y="24" width="8" height="8" fill="#7C3AED" fill-opacity="0.7"/>
+<rect x="24" y="24" width="8" height="8" fill="#2563EB" fill-opacity="0.9"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_682_1209">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
 </svg>
