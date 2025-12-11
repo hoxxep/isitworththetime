@@ -56,19 +56,19 @@ const timeSavings = [
           </div>
         </div>
 
-        <div class="billing-toggle-container">
-          <label class="block text-slate-700 dark:text-slate-300 font-medium  mb-1 sm:mb-2" data-i18n="payPer">Pay Per</label>
-          <div class="billing-toggle">
-            <button type="button" class="toggle-btn active" data-period="monthly" data-i18n="month">Month</button>
-            <button type="button" class="toggle-btn" data-period="annual" data-i18n="year">Year</button>
-          </div>
-        </div>
-
         <div class="spend-toggle-container">
-          <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1 sm:mb-2" data-i18n="spend">Spend</label>
+          <label class="block text-slate-700 dark:text-slate-300 font-medium mb-1 sm:mb-2" data-i18n="viewAs">View As</label>
           <div class="spend-toggle">
             <button type="button" class="toggle-btn active" data-spend="money" data-i18n="money">Money</button>
             <button type="button" class="toggle-btn" data-spend="time" data-i18n="time">Time</button>
+          </div>
+        </div>
+
+        <div class="billing-toggle-container">
+          <label class="block text-slate-700 dark:text-slate-300 font-medium  mb-1 sm:mb-2" data-i18n="savedPer">Saved Per</label>
+          <div class="billing-toggle">
+            <button type="button" class="toggle-btn active" data-period="monthly" data-i18n="month">Month</button>
+            <button type="button" class="toggle-btn" data-period="annual" data-i18n="year">Year</button>
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@ const timeSavings = [
       <div class="mt-12 text-center text-slate-600 dark:text-slate-400">
         <p class="font-medium mb-2" data-i18n="howToRead">How to read this table</p>
         <p class="text-sm max-w-xl mx-auto mb-2" data-i18n="instructions">
-          Each cell is the value of time saved over a month or year based on how often you do the task. For example, a tool saving 1 minute daily is worth up to $17/month on a $100k salary. Pay Per shows monthly or yearly costs. Spend shows monetary value or time saved. Based on 2,000 working hours per year (8 hours × 250 days).
+          Each cell is the value of time saved over a month or year based on how often you do the task. For example, a tool saving 1 minute daily is worth up to $17/month on a $100k salary. View As shows monetary value or time saved. Saved Per shows monthly or yearly savings. Based on 2,000 working hours per year (8 hours × 250 days).
         </p>
       </div>
 
@@ -503,10 +503,10 @@ const timeSavings = [
     subtitleMoney: string;
     subtitleTime: string;
     annualSalary: string;
-    payPer: string;
+    savedPer: string;
     month: string;
     year: string;
-    spend: string;
+    viewAs: string;
     money: string;
     time: string;
     timeSaved: string;
@@ -540,16 +540,16 @@ const timeSavings = [
       subtitleMoney: 'How much money you can spend automating a task before you\'re spending more than you save',
       subtitleTime: 'How much time you can spend automating a task before you\'re spending more than you save',
       annualSalary: 'Annual Salary',
-      payPer: 'Pay Per',
+      savedPer: 'Saved Per',
       month: 'Month',
       year: 'Year',
-      spend: 'Spend',
+      viewAs: 'View As',
       money: 'Money',
       time: 'Time',
       timeSaved: 'Time Saved',
       frequency: 'Frequency',
       howToRead: 'How to read this table',
-      instructions: 'Each cell is the value of time saved over a month or year based on how often you do the task. For example, a tool saving 1 minute daily is worth up to $17/month on a $100k salary. Pay Per shows monthly or yearly costs. Spend shows monetary value or time saved. Based on 2,000 working hours per year (8 hours × 250 days).',
+      instructions: 'Each cell is the value of time saved over a month or year based on how often you do the task. For example, a tool saving 1 minute daily is worth up to $17/month on a $100k salary. View As shows monetary value or time saved. Saved Per shows monthly or yearly savings. Based on 2,000 working hours per year (8 hours × 250 days).',
       starOnGithub: 'Star on GitHub',
       basedOnXkcd: 'Based on xkcd #1205',
       freq50day: '50/day',
@@ -573,16 +573,16 @@ const timeSavings = [
       subtitleMoney: 'Cuánto dinero puedes gastar automatizando una tarea antes de gastar más de lo que ahorras',
       subtitleTime: 'Cuánto tiempo puedes dedicar a automatizar una tarea antes de gastar más de lo que ahorras',
       annualSalary: 'Salario Anual',
-      payPer: 'Pago Por',
+      savedPer: 'Ahorrado Por',
       month: 'Mes',
       year: 'Año',
-      spend: 'Gastar',
+      viewAs: 'Ver Como',
       money: 'Dinero',
       time: 'Tiempo',
       timeSaved: 'Tiempo Ahorrado',
       frequency: 'Frecuencia',
       howToRead: 'Cómo leer esta tabla',
-      instructions: 'Cada celda es el valor del tiempo ahorrado en un mes o año según la frecuencia con la que realizas la tarea. Por ejemplo, una herramienta que ahorra 1 minuto diario vale hasta $17/mes con un salario de $100k. Pago Por muestra costos mensuales o anuales. Gastar muestra el valor monetario o el tiempo ahorrado. Basado en 2,000 horas de trabajo por año (8 horas × 250 días).',
+      instructions: 'Cada celda es el valor del tiempo ahorrado en un mes o año según la frecuencia con la que realizas la tarea. Por ejemplo, una herramienta que ahorra 1 minuto diario vale hasta $17/mes con un salario de $100k. Ver Como muestra el valor monetario o el tiempo ahorrado. Ahorrado Por muestra los ahorros mensuales o anuales. Basado en 2,000 horas de trabajo por año (8 horas × 250 días).',
       starOnGithub: 'Estrella en GitHub',
       basedOnXkcd: 'Basado en xkcd #1205',
       freq50day: '50/día',
@@ -606,16 +606,16 @@ const timeSavings = [
       subtitleMoney: 'Combien d\'argent vous pouvez dépenser pour automatiser une tâche avant de dépenser plus que vous n\'économisez',
       subtitleTime: 'Combien de temps vous pouvez consacrer à automatiser une tâche avant de dépenser plus que vous n\'économisez',
       annualSalary: 'Salaire Annuel',
-      payPer: 'Payer Par',
+      savedPer: 'Économisé Par',
       month: 'Mois',
       year: 'An',
-      spend: 'Dépenser',
+      viewAs: 'Afficher En',
       money: 'Argent',
       time: 'Temps',
       timeSaved: 'Temps Économisé',
       frequency: 'Fréquence',
       howToRead: 'Comment lire ce tableau',
-      instructions: 'Chaque cellule représente la valeur du temps économisé sur un mois ou une année selon la fréquence de la tâche. Par exemple, un outil qui économise 1 minute par jour vaut jusqu\'à 17$/mois avec un salaire de 100k$. Payer Par affiche les coûts mensuels ou annuels. Dépenser affiche la valeur monétaire ou le temps économisé. Basé sur 2 000 heures de travail par an (8 heures × 250 jours).',
+      instructions: 'Chaque cellule représente la valeur du temps économisé sur un mois ou une année selon la fréquence de la tâche. Par exemple, un outil qui économise 1 minute par jour vaut jusqu\'à 17$/mois avec un salaire de 100k$. Afficher En montre la valeur monétaire ou le temps économisé. Économisé Par montre les économies mensuelles ou annuelles. Basé sur 2 000 heures de travail par an (8 heures × 250 jours).',
       starOnGithub: 'Étoile sur GitHub',
       basedOnXkcd: 'Basé sur xkcd #1205',
       freq50day: '50/jour',
@@ -639,16 +639,16 @@ const timeSavings = [
       subtitleMoney: 'Wie viel Geld du für die Automatisierung einer Aufgabe ausgeben kannst, bevor du mehr ausgibst als du sparst',
       subtitleTime: 'Wie viel Zeit du für die Automatisierung einer Aufgabe aufwenden kannst, bevor du mehr ausgibst als du sparst',
       annualSalary: 'Jahresgehalt',
-      payPer: 'Zahlung Pro',
+      savedPer: 'Gespart Pro',
       month: 'Monat',
       year: 'Jahr',
-      spend: 'Ausgeben',
+      viewAs: 'Anzeigen Als',
       money: 'Geld',
       time: 'Zeit',
       timeSaved: 'Gesparte Zeit',
       frequency: 'Häufigkeit',
       howToRead: 'So liest du diese Tabelle',
-      instructions: 'Jede Zelle zeigt den Wert der gesparten Zeit über einen Monat oder ein Jahr, je nachdem wie oft du die Aufgabe erledigst. Beispiel: Ein Werkzeug, das täglich 1 Minute spart, ist bei einem Gehalt von 100k$ bis zu 17$/Monat wert. Zahlung Pro zeigt monatliche oder jährliche Kosten. Ausgeben zeigt den Geldwert oder die gesparte Zeit. Basierend auf 2.000 Arbeitsstunden pro Jahr (8 Stunden × 250 Tage).',
+      instructions: 'Jede Zelle zeigt den Wert der gesparten Zeit über einen Monat oder ein Jahr, je nachdem wie oft du die Aufgabe erledigst. Beispiel: Ein Werkzeug, das täglich 1 Minute spart, ist bei einem Gehalt von 100k$ bis zu 17$/Monat wert. Anzeigen Als zeigt den Geldwert oder die gesparte Zeit. Gespart Pro zeigt monatliche oder jährliche Einsparungen. Basierend auf 2.000 Arbeitsstunden pro Jahr (8 Stunden × 250 Tage).',
       starOnGithub: 'Stern auf GitHub',
       basedOnXkcd: 'Basiert auf xkcd #1205',
       freq50day: '50/Tag',
@@ -672,16 +672,16 @@ const timeSavings = [
       subtitleMoney: 'Quanto dinheiro você pode gastar automatizando uma tarefa antes de gastar mais do que economiza',
       subtitleTime: 'Quanto tempo você pode gastar automatizando uma tarefa antes de gastar mais do que economiza',
       annualSalary: 'Salário Anual',
-      payPer: 'Pagar Por',
+      savedPer: 'Economizado Por',
       month: 'Mês',
       year: 'Ano',
-      spend: 'Gastar',
+      viewAs: 'Ver Como',
       money: 'Dinheiro',
       time: 'Tempo',
       timeSaved: 'Tempo Economizado',
       frequency: 'Frequência',
       howToRead: 'Como ler esta tabela',
-      instructions: 'Cada célula é o valor do tempo economizado em um mês ou ano com base na frequência da tarefa. Por exemplo, uma ferramenta que economiza 1 minuto diário vale até $17/mês com um salário de $100k. Pagar Por mostra custos mensais ou anuais. Gastar mostra o valor monetário ou tempo economizado. Baseado em 2.000 horas de trabalho por ano (8 horas × 250 dias).',
+      instructions: 'Cada célula é o valor do tempo economizado em um mês ou ano com base na frequência da tarefa. Por exemplo, uma ferramenta que economiza 1 minuto diário vale até $17/mês com um salário de $100k. Ver Como mostra o valor monetário ou tempo economizado. Economizado Por mostra as economias mensais ou anuais. Baseado em 2.000 horas de trabalho por ano (8 horas × 250 dias).',
       starOnGithub: 'Estrela no GitHub',
       basedOnXkcd: 'Baseado em xkcd #1205',
       freq50day: '50/dia',
@@ -705,16 +705,16 @@ const timeSavings = [
       subtitleMoney: '在自动化任务上可以花多少钱，才不会花费超过节省的成本',
       subtitleTime: '在自动化任务上可以花多少时间，才不会花费超过节省的成本',
       annualSalary: '年薪',
-      payPer: '支付周期',
+      savedPer: '节省周期',
       month: '月',
       year: '年',
-      spend: '花费',
+      viewAs: '显示为',
       money: '金钱',
       time: '时间',
       timeSaved: '节省时间',
       frequency: '频率',
       howToRead: '如何阅读此表',
-      instructions: '每个单元格显示根据任务频率在一个月或一年内节省的时间价值。例如，每天节省1分钟的工具，在10万美元年薪下每月价值17美元。支付周期显示月度或年度成本。花费显示金钱价值或节省的时间。基于每年2,000个工作小时（8小时×250天）。',
+      instructions: '每个单元格显示根据任务频率在一个月或一年内节省的时间价值。例如，每天节省1分钟的工具，在10万美元年薪下每月价值17美元。显示为显示金钱价值或节省的时间。节省周期显示月度或年度节省。基于每年2,000个工作小时（8小时×250天）。',
       starOnGithub: '在GitHub上加星',
       basedOnXkcd: '基于 xkcd #1205',
       freq50day: '50次/天',
@@ -738,16 +738,16 @@ const timeSavings = [
       subtitleMoney: 'タスクの自動化に節約以上のコストをかける前に、いくらまでお金を使えるか',
       subtitleTime: 'タスクの自動化に節約以上のコストをかける前に、どれだけ時間を使えるか',
       annualSalary: '年収',
-      payPer: '支払い単位',
+      savedPer: '節約単位',
       month: '月',
       year: '年',
-      spend: '支出',
+      viewAs: '表示形式',
       money: 'お金',
       time: '時間',
       timeSaved: '節約時間',
       frequency: '頻度',
       howToRead: 'この表の読み方',
-      instructions: '各セルは、タスクの頻度に基づいて1ヶ月または1年間で節約される時間の価値を示しています。例えば、毎日1分節約するツールは、年収10万ドルの場合、月額17ドルの価値があります。支払い単位は月額または年額のコストを表示します。支出は金銭的価値または節約時間を表示します。年間2,000労働時間（8時間×250日）に基づいています。',
+      instructions: '各セルは、タスクの頻度に基づいて1ヶ月または1年間で節約される時間の価値を示しています。例えば、毎日1分節約するツールは、年収10万ドルの場合、月額17ドルの価値があります。表示形式は金銭的価値または節約時間を表示します。節約単位は月額または年額の節約を表示します。年間2,000労働時間（8時間×250日）に基づいています。',
       starOnGithub: 'GitHubでスター',
       basedOnXkcd: 'xkcd #1205に基づく',
       freq50day: '50回/日',
@@ -771,16 +771,16 @@ const timeSavings = [
       subtitleMoney: 'Quanto denaro puoi spendere per automatizzare un\'attività prima di spendere più di quanto risparmi',
       subtitleTime: 'Quanto tempo puoi dedicare ad automatizzare un\'attività prima di spendere più di quanto risparmi',
       annualSalary: 'Stipendio Annuale',
-      payPer: 'Pagamento Per',
+      savedPer: 'Risparmiato Per',
       month: 'Mese',
       year: 'Anno',
-      spend: 'Spendere',
+      viewAs: 'Visualizza Come',
       money: 'Denaro',
       time: 'Tempo',
       timeSaved: 'Tempo Risparmiato',
       frequency: 'Frequenza',
       howToRead: 'Come leggere questa tabella',
-      instructions: 'Ogni cella rappresenta il valore del tempo risparmiato in un mese o un anno in base alla frequenza dell\'attività. Ad esempio, uno strumento che risparmia 1 minuto al giorno vale fino a $17/mese con uno stipendio di $100k. Pagamento Per mostra i costi mensili o annuali. Spendere mostra il valore monetario o il tempo risparmiato. Basato su 2.000 ore lavorative all\'anno (8 ore × 250 giorni).',
+      instructions: 'Ogni cella rappresenta il valore del tempo risparmiato in un mese o un anno in base alla frequenza dell\'attività. Ad esempio, uno strumento che risparmia 1 minuto al giorno vale fino a $17/mese con uno stipendio di $100k. Visualizza Come mostra il valore monetario o il tempo risparmiato. Risparmiato Per mostra i risparmi mensili o annuali. Basato su 2.000 ore lavorative all\'anno (8 ore × 250 giorni).',
       starOnGithub: 'Stella su GitHub',
       basedOnXkcd: 'Basato su xkcd #1205',
       freq50day: '50/giorno',
@@ -804,16 +804,16 @@ const timeSavings = [
       subtitleMoney: 'Hoeveel geld je kunt uitgeven aan het automatiseren van een taak voordat je meer uitgeeft dan je bespaart',
       subtitleTime: 'Hoeveel tijd je kunt besteden aan het automatiseren van een taak voordat je meer uitgeeft dan je bespaart',
       annualSalary: 'Jaarsalaris',
-      payPer: 'Betaling Per',
+      savedPer: 'Bespaard Per',
       month: 'Maand',
       year: 'Jaar',
-      spend: 'Uitgeven',
+      viewAs: 'Weergeven Als',
       money: 'Geld',
       time: 'Tijd',
       timeSaved: 'Bespaarde Tijd',
       frequency: 'Frequentie',
       howToRead: 'Hoe deze tabel te lezen',
-      instructions: 'Elke cel toont de waarde van bespaarde tijd over een maand of jaar op basis van hoe vaak je de taak uitvoert. Bijvoorbeeld, een tool die dagelijks 1 minuut bespaart is tot $17/maand waard bij een salaris van $100k. Betaling Per toont maandelijkse of jaarlijkse kosten. Uitgeven toont geldwaarde of bespaarde tijd. Gebaseerd op 2.000 werkuren per jaar (8 uur × 250 dagen).',
+      instructions: 'Elke cel toont de waarde van bespaarde tijd over een maand of jaar op basis van hoe vaak je de taak uitvoert. Bijvoorbeeld, een tool die dagelijks 1 minuut bespaart is tot $17/maand waard bij een salaris van $100k. Weergeven Als toont geldwaarde of bespaarde tijd. Bespaard Per toont maandelijkse of jaarlijkse besparingen. Gebaseerd op 2.000 werkuren per jaar (8 uur × 250 dagen).',
       starOnGithub: 'Ster op GitHub',
       basedOnXkcd: 'Gebaseerd op xkcd #1205',
       freq50day: '50/dag',
@@ -837,16 +837,16 @@ const timeSavings = [
       subtitleMoney: 'Сколько денег можно потратить на автоматизацию задачи, прежде чем затраты превысят экономию',
       subtitleTime: 'Сколько времени можно потратить на автоматизацию задачи, прежде чем затраты превысят экономию',
       annualSalary: 'Годовая зарплата',
-      payPer: 'Оплата за',
+      savedPer: 'Сэкономлено за',
       month: 'Месяц',
       year: 'Год',
-      spend: 'Тратить',
+      viewAs: 'Показать как',
       money: 'Деньги',
       time: 'Время',
       timeSaved: 'Сэкономленное время',
       frequency: 'Частота',
       howToRead: 'Как читать эту таблицу',
-      instructions: 'Каждая ячейка показывает ценность сэкономленного времени за месяц или год в зависимости от частоты выполнения задачи. Например, инструмент, экономящий 1 минуту ежедневно, стоит до $17/месяц при зарплате $100k. Оплата за показывает месячные или годовые расходы. Тратить показывает денежную ценность или сэкономленное время. Основано на 2000 рабочих часов в год (8 часов × 250 дней).',
+      instructions: 'Каждая ячейка показывает ценность сэкономленного времени за месяц или год в зависимости от частоты выполнения задачи. Например, инструмент, экономящий 1 минуту ежедневно, стоит до $17/месяц при зарплате $100k. Показать как отображает денежную ценность или сэкономленное время. Сэкономлено за показывает месячную или годовую экономию. Основано на 2000 рабочих часов в год (8 часов × 250 дней).',
       starOnGithub: 'Звезда на GitHub',
       basedOnXkcd: 'На основе xkcd #1205',
       freq50day: '50/день',
