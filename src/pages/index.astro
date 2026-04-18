@@ -102,8 +102,8 @@ const preCalculatedData = timeSavings.map(time =>
 
       <div class="mt-12 text-center text-slate-600 dark:text-slate-400">
         <p class="font-medium mb-2" data-i18n="howToRead">How to read this table</p>
-        <p class="text-sm max-w-xl mx-auto mb-2" data-i18n="instructions">
-          Each cell is the value of time saved over a month or year based on how often you do the task. For example, a tool saving 1 minute daily is worth up to $17/month on a $100k salary. View As shows monetary value or time saved. Saved Per shows monthly or yearly savings. Based on 2,000 working hours per year (8 hours × 250 days).
+        <p class="text-sm max-w-xl mx-auto mb-2">
+          <span data-i18n="instructions">Each cell is the value of time saved over a month or year based on how often you do the task. For example, a tool saving 1 minute daily is worth up to $17/month on a $100k salary. View As shows monetary value or time saved. Saved Per shows monthly or yearly savings. Based on 2,000 working hours per year (8 hours × 250 days).</span> <span><span data-i18n="builtBy">Built by</span> <a class="underline" href="https://liams.website/">Liam Gray</a></span>.
         </p>
       </div>
 
@@ -289,7 +289,6 @@ const preCalculatedData = timeSavings.map(time =>
 
   .freq-header.highlight {
     background: rgb(220, 235, 250);
-    //color: white;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -507,6 +506,7 @@ const preCalculatedData = timeSavings.map(time =>
     instructions: string;
     starOnGithub: string;
     basedOnXkcd: string;
+    builtBy: string;
     // Frequency labels
     freq50day: string;
     freq5day: string;
@@ -544,6 +544,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: 'Each cell is the value of time saved over a month or year based on how often you do the task. For example, a tool saving 1 minute daily is worth up to $17/month on a $100k salary. View As shows monetary value or time saved. Saved Per shows monthly or yearly savings. Based on 2,000 working hours per year (8 hours × 250 days).',
       starOnGithub: 'Star on GitHub',
       basedOnXkcd: 'Based on xkcd #1205',
+      builtBy: 'Built by',
       freq50day: '50/day',
       freq5day: '5/day',
       freqDaily: 'Daily',
@@ -577,6 +578,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: 'Cada celda es el valor del tiempo ahorrado en un mes o año según la frecuencia con la que realizas la tarea. Por ejemplo, una herramienta que ahorra 1 minuto diario vale hasta $17/mes con un salario de $100k. Ver Como muestra el valor monetario o el tiempo ahorrado. Ahorrado Por muestra los ahorros mensuales o anuales. Basado en 2,000 horas de trabajo por año (8 horas × 250 días).',
       starOnGithub: 'Estrella en GitHub',
       basedOnXkcd: 'Basado en xkcd #1205',
+      builtBy: 'Creado por',
       freq50day: '50/día',
       freq5day: '5/día',
       freqDaily: 'Diario',
@@ -610,6 +612,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: 'Chaque cellule représente la valeur du temps économisé sur un mois ou une année selon la fréquence de la tâche. Par exemple, un outil qui économise 1 minute par jour vaut jusqu\'à 17$/mois avec un salaire de 100k$. Afficher En montre la valeur monétaire ou le temps économisé. Économisé Par montre les économies mensuelles ou annuelles. Basé sur 2 000 heures de travail par an (8 heures × 250 jours).',
       starOnGithub: 'Étoile sur GitHub',
       basedOnXkcd: 'Basé sur xkcd #1205',
+      builtBy: 'Créé par',
       freq50day: '50/jour',
       freq5day: '5/jour',
       freqDaily: 'Quotidien',
@@ -643,6 +646,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: 'Jede Zelle zeigt den Wert der gesparten Zeit über einen Monat oder ein Jahr, je nachdem wie oft du die Aufgabe erledigst. Beispiel: Ein Werkzeug, das täglich 1 Minute spart, ist bei einem Gehalt von 100k$ bis zu 17$/Monat wert. Anzeigen Als zeigt den Geldwert oder die gesparte Zeit. Gespart Pro zeigt monatliche oder jährliche Einsparungen. Basierend auf 2.000 Arbeitsstunden pro Jahr (8 Stunden × 250 Tage).',
       starOnGithub: 'Stern auf GitHub',
       basedOnXkcd: 'Basiert auf xkcd #1205',
+      builtBy: 'Erstellt von',
       freq50day: '50/Tag',
       freq5day: '5/Tag',
       freqDaily: 'Täglich',
@@ -676,6 +680,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: 'Cada célula é o valor do tempo economizado em um mês ou ano com base na frequência da tarefa. Por exemplo, uma ferramenta que economiza 1 minuto diário vale até $17/mês com um salário de $100k. Ver Como mostra o valor monetário ou tempo economizado. Economizado Por mostra as economias mensais ou anuais. Baseado em 2.000 horas de trabalho por ano (8 horas × 250 dias).',
       starOnGithub: 'Estrela no GitHub',
       basedOnXkcd: 'Baseado em xkcd #1205',
+      builtBy: 'Criado por',
       freq50day: '50/dia',
       freq5day: '5/dia',
       freqDaily: 'Diário',
@@ -709,6 +714,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: '每个单元格显示根据任务频率在一个月或一年内节省的时间价值。例如，每天节省1分钟的工具，在10万美元年薪下每月价值17美元。显示为显示金钱价值或节省的时间。节省周期显示月度或年度节省。基于每年2,000个工作小时（8小时×250天）。',
       starOnGithub: '在GitHub上加星',
       basedOnXkcd: '基于 xkcd #1205',
+      builtBy: '作者',
       freq50day: '50次/天',
       freq5day: '5次/天',
       freqDaily: '每天',
@@ -742,6 +748,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: '各セルは、タスクの頻度に基づいて1ヶ月または1年間で節約される時間の価値を示しています。例えば、毎日1分節約するツールは、年収10万ドルの場合、月額17ドルの価値があります。表示形式は金銭的価値または節約時間を表示します。節約単位は月額または年額の節約を表示します。年間2,000労働時間（8時間×250日）に基づいています。',
       starOnGithub: 'GitHubでスター',
       basedOnXkcd: 'xkcd #1205に基づく',
+      builtBy: '制作者',
       freq50day: '50回/日',
       freq5day: '5回/日',
       freqDaily: '毎日',
@@ -775,6 +782,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: 'Ogni cella rappresenta il valore del tempo risparmiato in un mese o un anno in base alla frequenza dell\'attività. Ad esempio, uno strumento che risparmia 1 minuto al giorno vale fino a $17/mese con uno stipendio di $100k. Visualizza Come mostra il valore monetario o il tempo risparmiato. Risparmiato Per mostra i risparmi mensili o annuali. Basato su 2.000 ore lavorative all\'anno (8 ore × 250 giorni).',
       starOnGithub: 'Stella su GitHub',
       basedOnXkcd: 'Basato su xkcd #1205',
+      builtBy: 'Creato da',
       freq50day: '50/giorno',
       freq5day: '5/giorno',
       freqDaily: 'Giornaliero',
@@ -808,6 +816,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: 'Elke cel toont de waarde van bespaarde tijd over een maand of jaar op basis van hoe vaak je de taak uitvoert. Bijvoorbeeld, een tool die dagelijks 1 minuut bespaart is tot $17/maand waard bij een salaris van $100k. Weergeven Als toont geldwaarde of bespaarde tijd. Bespaard Per toont maandelijkse of jaarlijkse besparingen. Gebaseerd op 2.000 werkuren per jaar (8 uur × 250 dagen).',
       starOnGithub: 'Ster op GitHub',
       basedOnXkcd: 'Gebaseerd op xkcd #1205',
+      builtBy: 'Gemaakt door',
       freq50day: '50/dag',
       freq5day: '5/dag',
       freqDaily: 'Dagelijks',
@@ -841,6 +850,7 @@ const preCalculatedData = timeSavings.map(time =>
       instructions: 'Каждая ячейка показывает ценность сэкономленного времени за месяц или год в зависимости от частоты выполнения задачи. Например, инструмент, экономящий 1 минуту ежедневно, стоит до $17/месяц при зарплате $100k. Показать как отображает денежную ценность или сэкономленное время. Сэкономлено за показывает месячную или годовую экономию. Основано на 2000 рабочих часов в год (8 часов × 250 дней).',
       starOnGithub: 'Звезда на GitHub',
       basedOnXkcd: 'На основе xkcd #1205',
+      builtBy: 'Создано',
       freq50day: '50/день',
       freq5day: '5/день',
       freqDaily: 'Ежедневно',
