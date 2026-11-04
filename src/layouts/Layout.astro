@@ -55,7 +55,6 @@ const canonicalUrl = siteUrl ? new URL(currentPath, siteUrl).toString() : undefi
 <body>
 <slot/>
 
-<!-- privacy-first analytics -->
-<script async is:inline src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b11f1bff96cf4e44b33255ff137975bc"}'></script>
 </body>
 </html>
